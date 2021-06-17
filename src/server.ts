@@ -1,17 +1,14 @@
 import express from "express";
 
+import { categoriesRoutes } from "./routes/categories.routes";
+import { specificationsRoutes } from "./routes/specifications.routes";
+
 const app = express();
 
 app.use(express.json());
 
-app.get("/", (request, response) => {
-  return response.json({ message: "Hello World!" });
-});
-
-app.post("/courses", (request, response) => {
-  const { name } = request.body;
-  console.log(name);
-  return response.json({ name });
-});
+// toda vez que bater na url /categories o use vai direcionar pro arquivo de categorias
+app.use("/categories", categoriesRoutes); // middleware da rota categories
+app.use("/specifications", specificationsRoutes); // middleware da rota categories
 
 app.listen(3333, () => console.log("Server is running!"));
