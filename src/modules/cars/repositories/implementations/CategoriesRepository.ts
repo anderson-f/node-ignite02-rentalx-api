@@ -1,14 +1,15 @@
-import { Category } from "../model/Category";
+import { Category } from "../../model/Category";
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
-} from "./ICategoriesRepository";
+} from "../ICategoriesRepository";
 
 class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   private static INSTANCE: CategoriesRepository;
 
+  // privando o construtor só posso dar new de dentro da classe
   private constructor() {
     // o this aponta pros atributos da classe
     this.categories = [];
